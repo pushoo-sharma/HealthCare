@@ -20,17 +20,16 @@ export default class PatientSideBar extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      activeTab: '1'
+      activeTab: '5 '
     };
   }
   toggle(tab) {
 
-    if (this.state.activeTab !== tab) {
+    if (this.state.activeTab != tab) {
       this.setState({
         activeTab: tab
       });
     }
-    debugger
   //  this.props.history.push("/home");
   }
   // constructor(props) {
@@ -105,14 +104,15 @@ export default class PatientSideBar extends React.Component {
           <NavbarBrand href="/"></NavbarBrand>
       
      
-            <Nav  tabs vertical>
+            <Nav  pills vertical>
               <NavItem color="grey">
-                <NavLink href="/home"   className={classnames({ active: this.state.activeTab === '1' })}
-              onClick={() => { this.toggle('1'); }}>                
+                <NavLink href="/patient/profile"   
+                  className={classnames({ active: this.state.activeTab === '1' })}
+                  onClick={() => { this.toggle('1'); }}>                
                 My Profile </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink 
+                <NavLink href="/patient/health"
                   className={classnames({ active: this.state.activeTab === '2' })}
                   onClick={() => { this.toggle('2'); }}
                 >My Health </NavLink>
@@ -130,9 +130,9 @@ export default class PatientSideBar extends React.Component {
                 >Equipments</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink 
-                  className={classnames({ active: this.state.activeTab === '4' })}
-                  onClick={() => { this.toggle('4'); }}
+                <NavLink href="/patient/bills"
+                  className={classnames({ active: this.state.activeTab === '5' })}
+                  onClick={() => { this.toggle('5'); }}
                 >Bills</NavLink>
               </NavItem>
             </Nav>
