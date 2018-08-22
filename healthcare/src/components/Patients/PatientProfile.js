@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, Container, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Container, Row, Col } from 'reactstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as ActionCreator from '../../Actions/ActionCreator'
@@ -59,21 +59,26 @@ var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24*30*12));
       <Form>
         <FormGroup>
           <Label for="name">Name</Label>
-          <Input type="text" name="name" id="name" placeholder="Name" />
+          <Row>
+          <Col><Input type="text" name="name" id="fname" placeholder="First" /></Col>
+          <Col><Input type="text" name="name" id="mname" placeholder="Middle" /></Col>
+          <Col><Input type="text" name="name" id="lname" placeholder="Last" /></Col>
+          </Row>
         </FormGroup>
         <FormGroup>
           <Label for="examplePassword">Password</Label>
-          <Input type="password" name="password" id="examplePassword" placeholder="Password" />
+          <Row><Col><Input type="password" name="password" id="examplePassword" placeholder="Password" /></Col>
+          <Col><Input type="password" name="password" id="exampleConfirm" placeholder="Confirm Password" /></Col></Row>
         </FormGroup>
 
         <FormGroup>
-            <Label for="birthDate">BirthDate</Label>
+            <Row><Col xs="9"><Label for="birthDate">BirthDate</Label>
             <Input type="date" name="birthDate" id="birthDate"
                 placeholder="password placeholder" onChange={(event)=>{this.calculateAge(event),
                 this.handleChange(event,"birthDate");
-            }}/>
-            <Label for="age">Age</Label>
-            <Input type="text" name="age" id="age" value={this.state.details.age} disabled />
+            }}/></Col>
+            <Col><Label for="age">Age</Label>
+            <Input type="text" name="age" id="age" value={this.state.details.age} disabled /></Col></Row>
         </FormGroup>
 
         <FormGroup>

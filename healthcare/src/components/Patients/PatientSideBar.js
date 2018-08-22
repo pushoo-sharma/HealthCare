@@ -14,6 +14,7 @@ import {
   DropdownMenu,
   DropdownItem ,Media} from 'reactstrap';
 
+  import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 export default class PatientSideBar extends React.Component {
   constructor(props) {
     super(props);
@@ -100,44 +101,38 @@ export default class PatientSideBar extends React.Component {
       //   </Navbar>
       // </div>
       <div>
-        <Navbar expand="md" >
-          <NavbarBrand href="/"></NavbarBrand>
-      
-     
             <Nav  pills vertical>
               <NavItem color="grey">
-                <NavLink href="/patient/profile"   
+                <Link to="/patient/profile"   
                   className={classnames({ active: this.state.activeTab === '1' })}
                   onClick={() => { this.toggle('1'); }}>                
-                My Profile </NavLink>
+                My Profile </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/patient/health"
+                <Link to="/patient/health"
                   className={classnames({ active: this.state.activeTab === '2' })}
                   onClick={() => { this.toggle('2'); }}
-                >My Health </NavLink>
+                >My Health </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/patient/bookAppointment"
+                <Link to="/patient/bookAppointment"
                   className={classnames({ active: this.state.activeTab === '3' })}
                   onClick={() => { this.toggle('3'); }}
-                >Appointments </NavLink>
+                >Appointments </Link>
               </NavItem>
               <NavItem>
-                <NavLink 
+                <Link to="#"
                   className={classnames({ active: this.state.activeTab === '4' })}
                   onClick={() => { this.toggle('4'); }}
-                >Equipments</NavLink>
+                >Equipments</Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/patient/bills"
+                <Link to="/patient/bills"
                   className={classnames({ active: this.state.activeTab === '5' })}
                   onClick={() => { this.toggle('5'); }}
-                >Bills</NavLink>
+                >Bills</Link>
               </NavItem>
             </Nav>
-        
-        </Navbar>
       </div>
     );
   }
