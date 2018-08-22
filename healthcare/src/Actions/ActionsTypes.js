@@ -1,0 +1,2 @@
+export const FORM_SUBMIT= 'FORM_SUBMIT';
+export const FORM_SUBMIT_RESULT= 'FORM_SUBMIT_RESULT';

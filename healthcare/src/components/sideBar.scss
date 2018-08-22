@@ -1,0 +1,168 @@
+@import "../assets/scss/colors.scss";
+.side-nav {
+    animation: none;
+    width: 160px;
+    padding: 11px 0;
+    background-color: $black-20;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    .dropdown {
+        padding-left: 16px;
+    }
+    .sidebar-menu-wrap {
+        margin-top: 34px;
+    }
+    .sidebar-menu-wrap.bottom {
+        bottom: 0;
+        position: absolute;
+        right: 0;
+        left: 0;
+    }
+}
+
+.sidebar-toggle-wrap {
+    padding: 8px 16px;
+    border-top: 1px solid $grey-42;
+    margin-top: 13px;
+    img {
+        width: 50%;
+    }
+}
+
+.sidebar-toggle-btn {
+    width: 24px !important;
+    float: right
+}
+
+.agency-name {
+    font-family: SourceSansPro;
+    font-weight: 600;
+    line-height: 1.43;
+    color: $grey-80;
+    padding-left: 16px;
+    width: 160px;
+    display: block
+}
+
+.dropdown-toggle::after {
+    float: none !important;
+    top: 3px;
+    position: relative;
+    color: #0069cd;
+}
+
+#brand-name {
+    background-color: transparent !important;
+    font-weight: 600;
+    color: $white !important;
+    border: none !important;
+    line-height: 1.33;
+    font-family: SourceSansPro;
+    cursor: pointer;
+    width: 160px;
+    display: block;
+}
+
+.sidebar-wrapper{
+	flex: initial;
+	order: 1;
+	width: 160px;
+}
+
+.sidebar-menu {
+    padding: 7px 16px;
+    color: $white;
+    font-weight: 600;
+    width: 160px;
+    font-size: 14px;
+    border-left: 4px solid transparent;
+    .media-left {
+        margin-right: 17px
+    }
+    &:hover {
+        background-color: $black-15;
+        color: $white;
+        border-color: $blue-2
+    }
+    span {
+        font-weight: normal
+    }
+}
+
+.nav-item {
+    .sidebar-menu-wrap {
+        padding-left: 24px;
+        margin-top: 0
+    }
+}
+
+.rotate-btn {
+    animation: rotate 500ms ease-in forwards
+}
+
+.expand {
+    animation: expand 500ms ease-in forwards
+}
+
+.shrink {
+    animation: shrink 500ms ease-in forwards; 
+}
+
+.main-img {
+    margin: 7px 13px
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(180deg)
+    }
+}
+
+.collapsed {
+    animation: collapsed 500ms ease-in forwards
+}
+
+.collapsed-child {
+    animation: collapsed-child 500ms ease-in forwards
+}
+
+@keyframes collapsed {
+    0% {
+        padding: 7px 16px;
+    }
+    100% {
+        padding: 7px 13px
+    }
+}
+
+@keyframes collapsed-child {
+    0% {
+        padding-left: 24px
+    }
+    100% {
+        padding-left: 0
+    }
+}
+
+@keyframes expand {
+    0% {
+        width: 50px
+    }
+    100% {
+        width: 160px
+    }
+}
+
+@keyframes shrink {
+    0% {
+        width: 160px
+    }
+    100% {
+        width: 50px
+    }
+}
