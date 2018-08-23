@@ -45,7 +45,7 @@ export default class Example extends React.Component {
                 Home</Link>
               </NavItem>
               <NavItem>
-                <Link to="/patient/bookAppointment"
+                <Link to="/patient/appointment"
                   className={classnames({ active: this.state.activeTab === '2' })}
                   onClick={() => { this.toggle('2'); }}
                 >Departments</Link>

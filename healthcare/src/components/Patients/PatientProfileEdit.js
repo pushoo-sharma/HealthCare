@@ -63,13 +63,13 @@ var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24*30*12));
         <FormGroup>
           
           <Row>
-          <Col xs="2"><Label for="title">Title</Label><Input type="select" name="title" id="title" disabled>
+          <Col xs="2"><Label for="title">Title</Label><Input type="select" name="title" id="title">
             <option>Mr.</option>
             <option>Mrs.</option>
             <option>Ms.</option>
           </Input></Col>
-          <Col><Label for="fname">First Name</Label><Input type="text" name="fname" id="fname" placeholder="First" disabled/></Col>
-          <Col><Label for="lname">Last Name</Label><Input type="text" name="lname" id="lname" placeholder="Last" disabled /></Col>
+          <Col><Label for="fname">First Name</Label><Input type="text" name="fname" id="fname" placeholder="First" /></Col>
+          <Col><Label for="lname">Last Name</Label><Input type="text" name="lname" id="lname" placeholder="Last" /></Col>
           </Row>
         </FormGroup>
         <FormGroup>
@@ -77,7 +77,7 @@ var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24*30*12));
             <Input type="date" name="DOB" id="DOB"
                 placeholder="password placeholder" onChange={(event)=>{this.calculateAge(event),
                 this.handleChange(event,"DOB");
-            }} disabled/></Col>
+            }}/></Col>
             <Col xs="2"><Label for="age">Age</Label>
             <Input type="text" name="age" id="age" value={this.state.details.age} disabled /></Col>
             
@@ -85,7 +85,7 @@ var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24*30*12));
         </FormGroup>
         <Row><Col xs="4">
             <Label for="gender">Gender*</Label>
-            <Input type="select" name="gender" id="gender" disabled>
+            <Input type="select" name="gender" id="gender">
             <option>Select Gender</option>
             <option>Male</option>
             <option>Female</option>
@@ -95,23 +95,23 @@ var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24*30*12));
         <br/><hr/><br/> 
         <FormGroup>
           <Label for="mobile">Mobile Number</Label>
-          <Input type="text" name="mobile" id="mobile" placeholder="Mobile Number" disabled/>
+          <Input type="text" name="mobile" id="mobile" placeholder="Mobile Number" />
         </FormGroup>
         <FormGroup>
           <Label for="email">Email</Label>
-          <Input type="email" name="email" id="email" placeholder="abc@xyz.com" disabled/>
+          <Input type="email" name="email" id="email" placeholder="abc@xyz.com" />
         </FormGroup>
         <FormGroup>
           <Label for="address">Mailing Address</Label>
-          <Input type="textarea" name="address" id="address" disabled/>
+          <Input type="textarea" name="address" id="address" />
         </FormGroup>
         <FormGroup>
           <Row>
           <Col><Label for="city">City</Label>
-          <Input type="text" name="city" id="city" placeholder="" disabled/></Col>
+          <Input type="text" name="city" id="city" placeholder="" /></Col>
           <Col>
           <Label for="state">Select</Label>
-          <Input type="select" name="state" id="state" disabled>
+          <Input type="select" name="state" id="state">
             <option>Gujarat</option>
             <option>Maharashtra</option>
             <option>Rajasthan</option>
@@ -121,16 +121,18 @@ var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24*30*12));
           </Col>
           <Col>
           <Label for="pincode">City</Label>
-          <Input type="text" name="pincode" id="pincode" placeholder="" disabled/>
+          <Input type="text" name="pincode" id="pincode" placeholder="" />
             
           </Col>
           </Row>
         </FormGroup>
         
           
-       
+        
+      <Link to="/patient/profile"><Button>Cancel</Button></Link>{"  "}
+      
+      <Button>Submit</Button>
       </Form>
-      <Link to={"/patient/edit"}> <Button >Edit</Button></Link>
       </Container>
     );
   }

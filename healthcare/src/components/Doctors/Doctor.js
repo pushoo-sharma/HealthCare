@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container,Row,Col} from 'reactstrap';
 
-import BookAppointment from '../Patients/BookAppointment';
+import Appointment from '../Patients/Appointment';
 import AddEditPatient from '../Patients/AddEditPatient';
 import {Route} from'react-router-dom';
 
@@ -15,7 +15,7 @@ export default class Doctor extends React.Component{
                 <Col md="2"><  DoctorSideBar /></Col> 
                 <Col>
                 
-                <Route path={`/doctor/bookAppointment`} component={BookAppointment} ></Route> 
+                <Route path={`/doctor/Appointment`} component={Appointment} ></Route> 
                 <Route path={`/doctor/registerPatient`} component={AddEditPatient} ></Route> 
                 {/* <Route path="/patient2" component={Patient21} ></Route> */}
              </Col>

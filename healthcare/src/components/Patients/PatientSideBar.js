@@ -115,13 +115,13 @@ export default class PatientSideBar extends React.Component {
                 >My Health </Link>
               </NavItem>
               <NavItem>
-                <Link to="/patient/bookAppointment"
+                <Link to="/patient/appointment"
                   className={classnames({ active: this.state.activeTab === '3' })}
                   onClick={() => { this.toggle('3'); }}
                 >Appointments </Link>
               </NavItem>
               <NavItem>
-                <Link to="#"
+                <Link to="/patient/equipments"
                   className={classnames({ active: this.state.activeTab === '4' })}
                   onClick={() => { this.toggle('4'); }}
                 >Equipments</Link>
