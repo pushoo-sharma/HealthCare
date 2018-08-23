@@ -49,7 +49,7 @@ export default class AdminSideBar extends React.Component {
               </NavItem>
               
               <NavItem>
-                <NavLink href="/patient/bookAppointment"
+                <NavLink href="/patient/Appointment"
                   className={classnames({ active: this.state.activeTab === '3' })}
                   onClick={() => { this.toggle('3'); }}
                 >Patients </NavLink>
