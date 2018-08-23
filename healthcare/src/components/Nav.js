@@ -6,13 +6,12 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,Media } from 'reactstrap';
   import classnames from 'classnames';
-
+  import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 export default class Example extends React.Component {
   constructor(props) {
     super(props);
@@ -41,27 +40,27 @@ export default class Example extends React.Component {
      
             <Nav  tabs>
               <NavItem color="grey">
-                <NavLink href="/home"   className={classnames({ active: this.state.activeTab === '1' })}
+                <Link to="/home"   className={classnames({ active: this.state.activeTab === '1' })}
               onClick={() => { this.toggle('1'); }}>                
-                Home</NavLink>
+                Home</Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/patient/bookAppointment"
+                <Link to="/patient/bookAppointment"
                   className={classnames({ active: this.state.activeTab === '2' })}
                   onClick={() => { this.toggle('2'); }}
-                >Departments</NavLink>
+                >Departments</Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/patient/registerPatient"
+                <Link to="/patient/registerPatient"
                   className={classnames({ active: this.state.activeTab === '3' })}
                   onClick={() => { this.toggle('3'); }}
-                >Facilities</NavLink>
+                >Facilities</Link>
               </NavItem>
               <NavItem>
-                <NavLink 
+                <Link to="#"
                   className={classnames({ active: this.state.activeTab === '4' })}
                   onClick={() => { this.toggle('4'); }}
-                >Contacts</NavLink>
+                >Contacts</Link>
               </NavItem>
             </Nav>
         

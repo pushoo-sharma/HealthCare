@@ -42,7 +42,7 @@ class App extends React.Component {
       <Col md="2"></Col>
         <Col> <Nav /></Col>
        </Row>
-      <Row>
+      <Row style={{"background-color":"#eeeeee"}}>
       
        
        

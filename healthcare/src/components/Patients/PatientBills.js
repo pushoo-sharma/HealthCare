@@ -17,7 +17,7 @@ class Bills extends React.Component {
                          
 
         return (
-            <Container style={{"font-size":"15px", "margin-top":"50px"}}>
+            <Container style={{"font-size":"15px"}}>
                 <Row>
                     <Col xs="5">
                         <Row><Col xs="2"><Label for="fromDate">From</Label></Col>

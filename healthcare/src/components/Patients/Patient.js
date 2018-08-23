@@ -4,7 +4,7 @@ import {Container,Row,Col} from 'reactstrap';
 import BookAppointment from './BookAppointment';
 import AddEditPatient from './AddEditPatient';
 import {Route} from'react-router-dom';
-import PatientProfile from "./Profile"
+import PatientProfile from "./PatientProfile"
 import PatientSideBar from '../Patients/PatientSideBar';
 import PatientHealth from "../Patients/PatientHealth";
 import PatientEquipments from "../Patients/PatientEquipments";
@@ -15,8 +15,8 @@ export default class Patient extends React.Component{
             <Container>
              
                <Row>
-                <Col md="3"><  PatientSideBar /></Col> 
-                <Col>
+                <Col md="2"><  PatientSideBar /></Col> 
+                <Col style={{"margin":"25px", "padding":"10px","background-color":"#cccccc"}}>
                 
                 <Route path={`/patient/bookAppointment`} component={BookAppointment} ></Route> 
                 <Route path={`/patient/registerPatient`} component={AddEditPatient} ></Route> 

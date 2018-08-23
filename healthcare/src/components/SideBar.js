@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Nav, NavItem, NavLink, DropdownItem, Dropdown, DropdownToggle, DropdownMenu, Media } from 'reactstrap';
+import { Nav, NavItem, Link, DropdownItem, Dropdown, DropdownToggle, DropdownMenu, Media } from 'reactstrap';
 import './sideBar.scss';
 
 
@@ -32,25 +32,25 @@ export default class Sidebar extends React.Component {
 		return (
 			<Nav className={"sidebar-menu-wrap child " + this.getAnimation().cls3} vertical>
 				<NavItem>
-					<NavLink className={"sidebar-menu " + this.getAnimation().cls2} href="#">
+					<Link className={"sidebar-menu " + this.getAnimation().cls2} to="#">
 						<Media left href="#">
 							<Media object src="/Icon_assets/svg/add-btn.svg" alt="sdc" />
 						</Media>
-						Create Ads</NavLink>
+						Create Ads</Link>
 				</NavItem>
 				<NavItem>
-					<NavLink className={"sidebar-menu " + this.getAnimation().cls2} href="#">
+					<Link className={"sidebar-menu " + this.getAnimation().cls2} to="#">
 						<Media left href="#">
 							<Media object src="/Icon_assets/svg/group-13.svg" alt="sdc" />
 						</Media>
-						Upload Creative</NavLink>
+						Upload Creative</Link>
 				</NavItem>
 				<NavItem>
-					<NavLink className={"sidebar-menu " + this.getAnimation().cls2} href="#">
+					<Link className={"sidebar-menu " + this.getAnimation().cls2} to="#">
 						<Media left href="#">
 							<Media object src="/Icon_assets/svg/group-18.svg" alt="sdc" />
 						</Media>
-						Creative Library</NavLink>
+						Creative Library</Link>
 				</NavItem>
 			</Nav>
 		)
@@ -104,50 +104,50 @@ export default class Sidebar extends React.Component {
 						</div>}
 					<Nav className="sidebar-menu-wrap" vertical>
 						<NavItem>
-							<NavLink className={"sidebar-menu " + this.getAnimation().cls2} href="#">
+							<Link className={"sidebar-menu " + this.getAnimation().cls2} to="#">
 								<Media left href="#">
 									<Media object src="/Icon_assets/svg/overview.svg" alt="sdc" />
 								</Media>
-								Performance</NavLink>
+								Performance</Link>
 						</NavItem>
 						<NavItem>
-							<NavLink className={"sidebar-menu " + this.getAnimation().cls2} tag={Link} to="/dashboard">
+							<Link className={"sidebar-menu " + this.getAnimation().cls2} tag={Link} to="/dashboard">
 								<Media left href="#">
 									<Media object src="/Icon_assets/svg/campaigns.svg" alt="sdc" />
 								</Media>
-								Campaigns</NavLink>
+								Campaigns</Link>
 						</NavItem>
 						<NavItem>
-							<NavLink className={"sidebar-menu " + this.getAnimation().cls2} href="#">
+							<Link className={"sidebar-menu " + this.getAnimation().cls2} to="#">
 								<Media left href="#">
 									<Media object src="/Icon_assets/svg/ads.svg" alt="sdc" />
 								</Media>
-								Adsets</NavLink>
+								Adsets</Link>
 						</NavItem>
 						<NavItem>
-							<NavLink className={"sidebar-menu " + this.getAnimation().cls2} href="#" onClick={this.toggleSubMenu}>
+							<Link className={"sidebar-menu " + this.getAnimation().cls2} to="#" onClick={this.toggleSubMenu}>
 								<Media left href="#">
 									<Media object src="/Icon_assets/svg/create-ads.svg" alt="sdc" />
 								</Media>
-								Ads</NavLink>
+								Ads</Link>
 							{this.state.AdsSubMenu ? this.AdsSubMenu(this) : null}
 						</NavItem>
 
 					</Nav>
 					<Nav className="sidebar-menu-wrap bottom" vertical>
 						<NavItem>
-							<NavLink className={"sidebar-menu " + this.getAnimation().cls2} href="#">
+							<Link className={"sidebar-menu " + this.getAnimation().cls2} to="#">
 								<Media left href="#">
 									<Media object src="/Icon_assets/svg/user.svg" alt="sdc" />
 								</Media>
-								<span>Smitesh D</span></NavLink>
+								<span>Smitesh D</span></Link>
 						</NavItem>
 						<NavItem>
-							<NavLink className={"sidebar-menu " + this.getAnimation().cls2} href="#">
+							<Link className={"sidebar-menu " + this.getAnimation().cls2} to="#">
 								<Media left href="#">
 									<Media object src="/Icon_assets/svg/heart.svg" alt="sdc" />
 								</Media>
-								My Favorites</NavLink>
+								My Favorites</Link>
 						</NavItem>
 						<div className="sidebar-toggle-wrap">
 							{this.state.shrink ? '' : <img src="/Icon_assets/svg/clear-demand.svg" />}
