@@ -11,3 +11,30 @@ export const ResultFormSubmit =(data)=>{
         payload : data
     };
 }
+
+export const SignInRequest = (data) =>{
+    alert("SinInSuccessAction = "+data)
+    return{
+        type : ActionTypes.SIGN_IN,
+        payload : data
+    }
+}
+
+export const SignInSuccess = (data) =>{
+    return{
+        type : ActionTypes.SIGN_IN_SUCCESS,
+        payload : data
+    }
+}
+
+
+// export function SignInSuccess(data) {
+//     return (dispatch) => {
+//         dispatch({
+//             type: ACTION_TYPE,
+//             data,
+//         }).then((response) => {
+//             dispatch(push('/my_url'));
+//         });
+//     };
+// }
