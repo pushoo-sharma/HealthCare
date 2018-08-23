@@ -23,13 +23,11 @@ class SignIn extends React.Component{
         this.setState({ details: newState });
     }
     handleSubmit(e) {
-        alert("sub");
         const data = new FormData(e.target);
         e.preventDefault();
      
         this.props.actions.SignInRequest(this.state.details);
-        debugger
-        alert(this.props.successMessage);
+       
      ///   this.props.history.push("/result/" + this.state.details.name)
     }
 
@@ -49,54 +47,58 @@ class SignIn extends React.Component{
 
         let formInput =
         
-        <Form id="signIn" onSubmit={(event) =>{this.handleSubmit(event)}}> 
-   <div className="clearfix" style={{"background-color":"#d8d8d8"}}>SignIn Details</div>
-            <FormGroup>
+     
+   <div className="clearfix" style={{"background-color":"#d8d8d8", "textAlign" :"center"}} >
+      <Form id="signIn" onSubmit={(event) =>{this.handleSubmit(event)}}> 
+   <FormGroup>
                 <Row>
-                <Col ><Label for="username">Username</Label></Col>
-                <Col> <Input type="text" name="username" id="username" onChange={(event)=>{this.handleChange(event,'username')}}/></Col>
+                <Col xs="4"><Label for="username">Username</Label></Col>
+                <Col xs="6"> <Input type="text" name="username" id="username" onChange={(event)=>{this.handleChange(event,'username')}}/></Col>
                 </Row>
             </FormGroup>
             <FormGroup>
                 <Row>
-                <Col ><Label for="password">Password</Label></Col>
-                <Col> <Input type="password" name="password" id="password" onChange={(event)=>{this.handleChange(event,'password')}} /></Col>
+                <Col xs="4"><Label for="password">Password</Label></Col>
+                <Col xs="6"> <Input type="password" name="password" id="password" onChange={(event)=>{this.handleChange(event,'password')}} /></Col>
                 </Row>
             </FormGroup>
             <FormGroup >
                
                <Row>
-                  
-               <Col>
-                   <Button color="primary" type="submit" className="float-right" >submit</Button>
+               <Col xs="4"></Col>
+               <Col xs="6">
+                   <Button color="primary" type="submit" >submit</Button>
                  
                </Col>
-               <Col>
-                   
-               </Col></Row>
+            </Row>
 
            </FormGroup>
-            </Form>
+           </Form>
+   </div>
+                    
 
         return(
             <Container>
 
             <Row>
-                <Col md="1"></Col>
+                <Col md="3"></Col>
                
-                <Col md="6">
+                <Col md="5">
                     <div className="page-title">
                   
                        
-                    <div className="title_left" style={{"text-align":"center"}} >
+                    <div className="title_left" style={{"textAlign":"center"}} >
                             <h3>Sign In</h3>
                         </div>
                         <div className="title_right">
                         </div>
                     </div>
                     {formInput}
-                    </Col> <Col md="2"></Col><Col md="3"></Col>
+                    </Col> <Col md="2"></Col><Col md="2"></Col>
                 </Row>
+                <Row> <Col md="3"></Col><Col md="4"><div style ={{"textAlign" : "center"}}><a href="/">Forgot Password</a></div></Col><Col></Col></Row>
+             
+                <Row> <Col md="3"></Col><Col md="4"><div style ={{"textAlign" : "center"}}><a href="/registerPatient">New User ? Sign up here</a></div></Col><Col></Col></Row>
             </Container>
         );
     }
