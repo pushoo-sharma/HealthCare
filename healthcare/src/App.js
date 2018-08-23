@@ -3,7 +3,7 @@ import './App.css';
 import {Route} from'react-router-dom';
 import HomePage from './components/HomePage';
 import PatientRegistration from './components/Patients/AddEditPatient';
-
+import SignIn from './components/SignIn/SignIn';
 import ResultComponent from './components/ResultComponent';
 
 import Nav from './components/Nav';
@@ -51,7 +51,10 @@ class App extends React.Component {
   <Route exact path="/" component={HomePage} ></Route>
   <Route exact path="/home" component={HomePage} ></Route>
     <Route exact path="/registerPatient" component={PatientRegistration}></Route>
+    
+    {/* <Route exact path="/bookAppointment" component={BookAppointment}></Route> */}
     {/* <Route exact path="/result/:name" component={ResultComponent}></Route> */}
+    <Route exact path="/signin/:id" component={SignIn} ></Route>
     <Route  path="/patient" component={Patient}></Route>
     <Route  path="/doctor" component={Doctor}></Route>
     <Route  path="/admin" component={Admin}></Route>

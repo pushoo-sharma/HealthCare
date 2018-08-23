@@ -63,6 +63,26 @@ export default class Appointment extends React.Component{
                     </Input></Col>
                     </Row>
                     <br/>
+                    <Table size="sm" bordered > 
+                    <thead>
+                    <tr>
+                        <th>Equipment Name</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        
+                    </tr>
+                  
+                    </tbody>
+                </Table>
                     <Link to="/patient/equipments"><Button>Cancel</Button></Link>{"  "}
                     <Button>Confirm</Button>
                 </Form>

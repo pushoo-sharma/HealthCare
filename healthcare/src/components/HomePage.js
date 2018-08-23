@@ -22,7 +22,7 @@ export default class HomePage extends React.Component{
                    
                     <Col> 
                   
-                    <Button style={buttonStyles} onClick={()=>this.navigatePage("/patient")}>Patients</Button>
+                    <Button style={buttonStyles} onClick={()=>this.navigatePage("/signin/1")}>Patients</Button>
                                  
                    
                     </Col> 
