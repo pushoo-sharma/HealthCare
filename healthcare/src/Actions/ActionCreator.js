@@ -13,7 +13,6 @@ export const ResultFormSubmit =(data)=>{
 }
 
 export const SignInRequest = (data) =>{
-    alert("SinInSuccessAction = "+data)
     return{
         type : ActionTypes.SIGN_IN,
         payload : data
