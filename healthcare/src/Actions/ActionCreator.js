@@ -26,6 +26,12 @@ export const SignInSuccess = (data) =>{
     }
 }
 
+export const SignInSuccess1 = (data) =>{
+    return{
+        type : ActionTypes.SIGN_IN_SUCCESS,
+        payload : data
+    }
+}
 
 // export function SignInSuccess(data) {
 //     return (dispatch) => {

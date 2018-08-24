@@ -3,6 +3,7 @@ import './App.css';
 import {Route} from'react-router-dom';
 import HomePage from './components/HomePage';
 import PatientRegistration from './components/Patients/AddEditPatient';
+import RegisterPatient from './components/Patients/RegisterPatient';
 import SignIn from './components/SignIn/SignIn';
 import ResultComponent from './components/ResultComponent';
 
@@ -50,7 +51,8 @@ class App extends React.Component {
         
   <Route exact path="/" component={HomePage} ></Route>
   <Route exact path="/home" component={HomePage} ></Route>
-    <Route exact path="/registerPatient" component={PatientRegistration}></Route>
+    {/* <Route exact path="/registerPatient" component={PatientRegistration}></Route> */}
+    <Route exact path="/registerPatient" component={RegisterPatient}></Route>
     
     {/* <Route exact path="/bookAppointment" component={BookAppointment}></Route> */}
     {/* <Route exact path="/result/:name" component={ResultComponent}></Route> */}

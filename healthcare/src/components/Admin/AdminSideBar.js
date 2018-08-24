@@ -60,6 +60,18 @@ export default class AdminSideBar extends React.Component {
                   onClick={() => { this.toggle('4'); }}
                 >Doctors</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink href ="/admin/registerDoctor"
+                  className={classnames({ active: this.state.activeTab === '4' })}
+                  onClick={() => { this.toggle('4'); }}
+                >Register Doctor</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href ="/admin/registerStoreKeeper"
+                  className={classnames({ active: this.state.activeTab === '4' })}
+                  onClick={() => { this.toggle('4'); }}
+                >Register Store Keeper</NavLink>
+              </NavItem>
               {/* <NavItem>
                 <NavLink 
                   className={classnames({ active: this.state.activeTab === '4' })}

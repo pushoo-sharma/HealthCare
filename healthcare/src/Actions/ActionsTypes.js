@@ -4,3 +4,5 @@ export const FORM_SUBMIT_RESULT= 'FORM_SUBMIT_RESULT';
 
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
+
+export const REGISTER_PATIENT = 'REGISTER_PATIENT';
