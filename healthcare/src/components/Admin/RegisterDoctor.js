@@ -16,21 +16,16 @@ class RegisterDoctor extends React.Component{
             }
 
         };
-        this.calculateAge = this.calculateAge.bind(this);
+        this.setAge = this.setAge.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleReset = this.handleReset.bind(this);
     }
 
-    calculateAge(event) {
-        var date1 = new Date(event.target.value);;
-        var date2 = new Date();;
-        var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-        var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24 * 30 * 12));
+    setAge(age){
         var newState = this.state.details;
-        newState["age"] = diffDays;
+        newState['age'] = age;
         this.setState({ details: newState });
-
     }
 
     handleSubmit(e) {
@@ -40,7 +35,7 @@ class RegisterDoctor extends React.Component{
         var a= this.state.details;
         debugger
 
-        //this.props.actions.actionFormSubmit(this.state.details);
+        this.props.actions.DoctorRegisterRequest(this.state.details);
         ///   this.props.history.push("/result/" + this.state.details.name)
     }
 
@@ -62,8 +57,15 @@ class RegisterDoctor extends React.Component{
     }
 
 render(){
+    let success,error;
+if(typeof(this.props.response)!="undefined" && this.props.response !== null){
+    var response = this.props.response;
+success = response.successMessage;
+error = response.errorMessage;
+debugger
+}
     return  <Container>
-
+{error}
     <Row>
         <Col md="1"></Col>
 
@@ -85,7 +87,7 @@ render(){
          
            <Form id="patientDetails" onSubmit={(event) => { this.handleSubmit(event) }}>
        
-           <UserProfile handleChange = {this.handleChange} calculateAge={this.calculateAge}/>
+           <UserProfile handleChange = {this.handleChange} setAge={this.setAge}/>
            <div className="ln_solid"></div>
                 <FormGroup >
 
@@ -110,10 +112,19 @@ render(){
 }
 
 
+const mapStateToProps = (state, ownProps) => {
+    debugger
+	return {
+		...ownProps,
+        response: state.registerUser.response
+        
+       // errorMessage : state.signIn
+	};
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
         actions: bindActionCreators(ActionCreator, dispatch)
     };
 };
-export default connect(null, mapDispatchToProps)(RegisterDoctor);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterDoctor);

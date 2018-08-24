@@ -16,32 +16,34 @@ class RegisterPatient extends React.Component{
             }
 
         };
-        this.calculateAge = this.calculateAge.bind(this);
+        this.setAge = this.setAge.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleReset = this.handleReset.bind(this);
     }
 
-    calculateAge(event) {
-        var date1 = new Date(event.target.value);;
-        var date2 = new Date();;
-        var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-        var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24 * 30 * 12));
-        var newState = this.state.details;
-        newState["age"] = diffDays;
-        this.setState({age:diffDays});
-        this.setState({ details: newState });
+    // calculateAge(event) {
+    //     var date1 = new Date(event.target.value);;
+    //     var date2 = new Date();;
+    //     var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    //     var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24 * 30 * 12));
+    //     var newState = this.state.details;
+    //     newState["age"] = diffDays;
+    //     this.setState({age:diffDays});
+    //     this.setState({ details: newState });
 
-    }
+    // }
 
     handleSubmit(e) {
         alert("sub");
-        const data = new FormData(e.target);
+   
         e.preventDefault();
         var a= this.state.details;
-        debugger
+     
 
-        this.props.actions.actionFormSubmit(this.state.details);
+        this.props.actions.PatientRegisterRequest(this.state.details);
+        var a=this.props;
+     
         ///   this.props.history.push("/result/" + this.state.details.name)
     }
 
@@ -52,17 +54,28 @@ class RegisterPatient extends React.Component{
 
 
     handleChange(e, fieldName) {
-      //  alert(fieldName+" = "+e.target.value);
-      
+     
         var newState = this.state.details;
         newState[fieldName] = e.target.value;
         this.setState({ details: newState });
+    }
 
-
-
+    setAge(age){
+        var newState = this.state.details;
+        newState['age'] = age;
+        this.setState({ details: newState });
     }
 
 render(){
+let success,error;
+if(typeof(this.props.response)!="undefined" && this.props.response !== null){
+    var response = this.props.response;
+success = response.successMessage;
+error = response.errorMessage;
+debugger
+}
+debugger
+
     return  <Container>
 
     <Row>
@@ -72,7 +85,7 @@ render(){
             <div className="page-title">
 
 
-                <div className="title_left" style={{ "text-align": "center" }} >
+                <div className="title_left" style={{ "textAlign": "center" }} >
                     <h3>Patient Registration</h3>
                 </div>
                 <div className="title_right">
@@ -82,14 +95,12 @@ render(){
 
 
 
-
+{error}
             {/* <div className="jumbotron bg-info"> */}
          
            <Form id="patientDetails" onSubmit={(event) => { this.handleSubmit(event) }}>
            <LoginDetailsComponent handleChange = {this.handleChange}/>
-           <UserProfile handleChange = {this.handleChange} calculateAge={this.calculateAge}
-           age={this.state.age}
-           />
+           <UserProfile handleChange = {this.handleChange} setAge={this.setAge}/>
            <div className="ln_solid"></div>
                 <FormGroup >
 
@@ -117,7 +128,8 @@ const mapStateToProps = (state, ownProps) => {
     debugger
 	return {
 		...ownProps,
-        successMessage: state.signIn.response
+        response: state.registerUser.response
+        
        // errorMessage : state.signIn
 	};
 };
@@ -127,4 +139,4 @@ const mapDispatchToProps = (dispatch) => {
         actions: bindActionCreators(ActionCreator, dispatch)
     };
 };
-export default connect(null, mapDispatchToProps)(RegisterPatient);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPatient);
