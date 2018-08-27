@@ -26,20 +26,51 @@ export const SignInSuccess = (data) =>{
     }
 }
 
-export const SignInSuccess1 = (data) =>{
+export const PatientRegisterRequest = (data) =>{
+   
     return{
-        type : ActionTypes.SIGN_IN_SUCCESS,
+        type : ActionTypes.REGISTER_PATIENT,
         payload : data
     }
 }
 
-// export function SignInSuccess(data) {
-//     return (dispatch) => {
-//         dispatch({
-//             type: ACTION_TYPE,
-//             data,
-//         }).then((response) => {
-//             dispatch(push('/my_url'));
-//         });
-//     };
-// }
+export const PatientRegisterResponse = (data) =>{
+    return{
+        type : ActionTypes.REGISTER_PATIENT_RESPONSE,
+        payload : data
+    }
+}
+
+
+export const DoctorRegisterRequest = (data) =>{
+   
+    return{
+        type : ActionTypes.REGISTER_DOCTOR,
+        payload : data
+    }
+}
+
+export const DoctorRegisterResponse = (data) =>{
+   
+    return{
+        type : ActionTypes.REGISTER_DOCTOR_RESPONSE,
+        payload : data
+    }
+}
+
+
+export const StoreKeeperRegisterRequest = (data) =>{
+   
+    return{
+        type : ActionTypes.REGISTER_STORE_KEEPER,
+        payload : data
+    }
+}
+
+export const StoreKeeperRegisterResponse = (data) =>{
+   
+    return{
+        type : ActionTypes.REGISTER_STORE_KEEPER_RESPONSE,
+        payload : data
+    }
+}

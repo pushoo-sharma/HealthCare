@@ -3,15 +3,30 @@ import { Form, FormGroup, Input, Label, FormText, Button, Col, Row, Container } 
 export default class UserProfile extends React.Component{
     constructor(props){
         super(props);
+        this.state={
+            age : ''
+        }
     }
+
+    calculateAge(event) {
+        var date1 = new Date(event.target.value);;
+        var date2 = new Date();;
+        var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+        var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24 * 30 * 12));
+       
+        this.setState({age:diffDays});
+        this.props.setAge(diffDays);
+    }
+
     render(){
+     
         return  (
         <div>
         {/* <Form id="patientDetails" onSubmit={(event) => { this.handleSubmit(event) }}> */}
 
          
          <div >Personal Details</div>
-                <div className="clearfix" style={{ "background-color": "#d8d8d8" }}>
+                <div className="clearfix" style={{ "backgroundColor": "#d8d8d8" }}>
 
                    
                         <Row> <Col ><Label for="firstName">FirstName</Label><Input type="firstName" name="firstName" id="firstName" onChange={(event) => { this. props.handleChange(event, 'firstName') }} /></Col><Col></Col></Row>
@@ -32,16 +47,16 @@ export default class UserProfile extends React.Component{
                                 <Label for="birthDate">BirthDate</Label>
                                 <Input type="date" name="birthDate" id="birthDate"
                                     placeholder="password placeholder" onChange={(event) => {
-                                        this.props.calculateAge(event),
+                                        this.calculateAge(event),
                                             this. props.handleChange(event, "birthDate");
                                     }} />
                             </Col>
-                            <Col md="4"><Label for="age">Age</Label><Input type="text" name="age" id="age" value={this.props.age} disabled /></Col>
+                            <Col md="4"><Label for="age">Age</Label><Input type="text" name="age" id="age" value={this.state.age} disabled onBlur={(event) =>{ this.props.handleChange(event,'age')}} /></Col>
                         </Row>
                     
 
                    
-                        <Row> <Col ><Label for="gender">Gender</Label><Input type="select" name="gender" id="gender" onChange={(event) => { this. props.handleChange(event, 'firstName') }}>
+                        <Row> <Col ><Label for="gender">Gender</Label><Input type="select" name="gender" id="gender" onChange={(event) => { this. props.handleChange(event, 'gender') }}>
                             <option>Select Gender</option>
                             <option>Male</option>
                             <option>Female</option>
@@ -52,7 +67,7 @@ export default class UserProfile extends React.Component{
                 </div>
                 <br/>
                 <div >Contact Details</div>
-                <div className="clearfix" style={{ "background-color": "#d8d8d8" }}>
+                <div className="clearfix" style={{ "backgroundColor": "#d8d8d8" }}>
 
                    
                         <Row> <Col ><Label for="contactno">Contact No</Label>
