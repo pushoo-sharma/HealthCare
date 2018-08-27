@@ -2,17 +2,29 @@ import {Container , Table, NavItem, Nav, Row, Col, Button, Form, FormGroup, Labe
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import React from "react"
 export default class Appointment extends React.Component{
+    constructor(){
+        super()
+        //set state by fetching initial value
+        this.state={
+            upcoming:[{dept:"orth",doctor:"Dr.Doctor",date:"11/11/11",time:"someTime"},
+                      {dept:"cardio",doctor:"Dr.NotDoctor",date:"12/12/12",time:"someOtherTime"}]
+        }
+    }
+    handleCancel(e){
+        //delete appointment
+        console.log("cancel on ",e.target.id)
+    }
     render(){
-        
-        /* var inst = data.map(x=>{
+        var listOfAppointments = this.state.upcoming.map((appointment,index)=>
             <tr>
-                <td> x.n</td>
-                <td>x.dept</td>
-                <td>x.doc</td>
-                <td>x.date</td>
-                <td>x.time</td>
+                <td>{index}</td>
+                <td>{appointment.dept}</td>
+                <td>{appointment.doctor}</td>
+                <td>{appointment.date}</td>
+                <td>{appointment.time}</td>
+                <td><a id={index} onClick={this.handleCancel}>Cancel</a></td>
             </tr>
-        }) */
+        )
         var Message=()=>{
             if(false){
                 return(<Alert color="danger">Appointment not available at this time. Please try for some other date or time.</Alert>)
@@ -38,14 +50,7 @@ export default class Appointment extends React.Component{
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>someDept</td>
-                        <td>someDoc</td>
-                        <td>11/11/11</td>
-                        <td>11:30</td>
-                        <td><a href="#">Cancel</a></td>
-                    </tr>
+                    {listOfAppointments}
                   
                     </tbody>
                 </Table>

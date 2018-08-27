@@ -11,7 +11,8 @@ class PatientProfile extends React.Component {
         this.state = {
             details: {
                 age:''
-            }
+            },
+
 
         };
         this.calculateAge=this.calculateAge.bind(this);
@@ -55,7 +56,7 @@ var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24*30*12));
         this.setState({ details: newState });
     }
   render() {
-      console.log("hello")
+      console.log(this.state)
     return (
         <Container style={{"margin-bottom":"100px"}}>
         <h3>Personal Details</h3><hr/>
@@ -63,7 +64,8 @@ var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24*30*12));
         <FormGroup>
           
           <Row>
-          <Col xs="2"><Label for="title">Title</Label><Input type="select" name="title" id="title" disabled>
+          <Col xs="2"><Label for="title">Title</Label><Input type="select" name="title" id="title" onChange={(event)=>{this.handleChange(event,"title");
+          }}disabled>
             <option>Mr.</option>
             <option>Mrs.</option>
             <option>Ms.</option>

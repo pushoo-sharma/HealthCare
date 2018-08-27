@@ -55,15 +55,17 @@ export default class Appointment extends React.Component{
                 <h5 style={{"text-align":"center"}}>Request</h5>
                 <Form>
                     <Row>
-                    <Col><Label for="date">Select Date for Equipment</Label>
-                    <Input style={{"maxWidth":"75%"}} type="date" id="date" name="date"/></Col> 
-                    <Col><Label for="equipment">Equipment Name</Label><Input style={{"maxWidth":"75%"}}type="select" name="equipment" id="equipment">
+                    <Col><Label for="date">From</Label>
+                    <Input style={{"maxWidth":"85%"}} type="date" id="from" name="from"/></Col>
+                    <Col><Label for="date">To</Label>
+                    <Input style={{"maxWidth":"85%"}} type="date" id="to" name="to"/></Col> 
+                    <Col><Label for="equipment">Equipment Name</Label><Input style={{"maxWidth":"85%"}}type="select" name="equipment" id="equipment">
                     <option>Select Equipment</option>
                     <option>1</option>
                     </Input></Col>
                     </Row>
                     <br/>
-                    <Table size="sm" bordered > 
+                    <Table size="sm" bordered> 
                     <thead>
                     <tr>
                         <th>Equipment Name</th>
@@ -84,7 +86,6 @@ export default class Appointment extends React.Component{
                     </tbody>
                 </Table>
                     <Link to="/patient/equipments"><Button>Cancel</Button></Link>{"  "}
-                    <Button>Confirm</Button>
                 </Form>
 
             </Container>

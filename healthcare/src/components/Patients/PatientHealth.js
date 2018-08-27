@@ -4,7 +4,32 @@ import { Nav, NavItem, NavLink, Container, Table, Form, FormGroup, Label, Input,
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 export default class Example extends React.Component {
+
+  constructor(){
+    super();
+    this.state={
+      notes:[{date:"11/11/11",doctor:"Dr.Doctor",Disease:"Flu",Medication:"Paracetamol",Precaution:"No Oili Food"},{date:"11/11/11",doctor:"Dr.Doctor",Disease:"Fluuuu",Medication:"Asprin",Precaution:"No Food"}]
+    }
+    //call api to get info and set it to state
+    this.handleNotes = this.handleNotes.bind(this)
+  }
+  handleNotes(e){
+    this.setState({
+      Disease:this.state.notes[e.target.id].Disease,
+      Medication:this.state.notes[e.target.id].Medication,
+      Precaution:this.state.notes[e.target.id].Precaution,
+    })
+  }
+  
   render() {
+    var listOfNotes = this.state.notes.map((note,index)=>
+      <tr>
+        <td>{note.date}</td>
+        <td>{note.doctor}</td>
+        <td><a id={index} onClick={this.handleNotes}>ViewNotes</a></td>
+      </tr>
+    )
+    console.log(listOfNotes)
     var VisitNotes = () => (
         <Container>
           <h6 style={{"text-align":"center"}}>Patient Visit Notes</h6>
@@ -19,19 +44,15 @@ export default class Example extends React.Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>11/11/11</td>
-            <td>Otto</td>
-            <td><a href="#">View Notes</a></td>
-          </tr>
+          {listOfNotes}
           
         </tbody>
       </Table>
 
       <div className="border" style={{"text-align":"center"}}>
-          Disease:     <br/>
-          Medication:  <br/>
-          Precaution   <br/>
+          Disease:     {this.state.Disease}<br/>
+          Medication:  {this.state.Medication}<br/>
+          Precaution   {this.state.Precaution}<br/>
       </div>
         </Container>
       );
