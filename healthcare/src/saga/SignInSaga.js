@@ -7,6 +7,7 @@ export default function* SignInSaga(){
     while(true){
         const action = yield(take(ActionTypes.SIGN_IN));
       //  let a = {message : "success"};
+      
         yield(put(actionCreator.SignInSuccess("success")));
         
 //  yield put(push('/doctor')) ;

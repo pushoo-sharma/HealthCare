@@ -1,35 +1,49 @@
 import React from 'react';
 import { Nav, NavItem, NavLink, Container, Table, Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as ActionCreator from '../../Actions/ActionCreator'
 
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-export default class Example extends React.Component {
+class PatientHealth extends React.Component {
 
   constructor(){
     super();
     this.state={
-      notes:[{date:"11/11/11",doctor:"Dr.Doctor",Disease:"Flu",Medication:"Paracetamol",Precaution:"No Oili Food"},{date:"11/11/11",doctor:"Dr.Doctor",Disease:"Fluuuu",Medication:"Asprin",Precaution:"No Food"}]
+      notes:[]  
     }
     //call api to get info and set it to state
     this.handleNotes = this.handleNotes.bind(this)
   }
   handleNotes(e){
     this.setState({
-      Disease:this.state.notes[e.target.id].Disease,
-      Medication:this.state.notes[e.target.id].Medication,
-      Precaution:this.state.notes[e.target.id].Precaution,
+      Disease:this.props.notes[e.target.id].Disease,
+      Medication:this.props.notes[e.target.id].Medication,
+      Precaution:this.props.notes[e.target.id].Precaution,
     })
   }
-  
+  componentDidMount(){
+    this.props.actions.FetchVisitNotes(/*user id*/)
+    this.props.actions.FetchMedicalHistory(/*userid*/)
+  }
   render() {
-    var listOfNotes = this.state.notes.map((note,index)=>
-      <tr>
-        <td>{note.date}</td>
-        <td>{note.doctor}</td>
-        <td><a id={index} onClick={this.handleNotes}>ViewNotes</a></td>
-      </tr>
-    )
-    console.log(listOfNotes)
+    console.log("props",this.props)
+    console.log("state",this.state)
+    //this.setState({notes:this.props.notes})
+    if(this.props.notes)
+    {
+      var listOfNotes = this.props.notes.map((note,index)=>
+        <tr>
+          <td>{note.date}</td>
+          <td>{note.doctor}</td>
+          <td><a id={index} onClick={this.handleNotes}>ViewNotes</a></td>
+        </tr>
+      )
+    }
+    else
+      var listOfNotes=<tr></tr>
+    console.log("listOfNotes",listOfNotes)
     var VisitNotes = () => (
         <Container>
           <h6 style={{"text-align":"center"}}>Patient Visit Notes</h6>
@@ -116,3 +130,21 @@ export default class Example extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  debugger
+  console.log(state)
+return {
+  ...ownProps,
+      notes: state.health.notes
+      
+     // errorMessage : state.signIn
+};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      actions: bindActionCreators(ActionCreator, dispatch)
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(PatientHealth);

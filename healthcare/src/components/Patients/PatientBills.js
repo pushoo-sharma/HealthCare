@@ -1,5 +1,4 @@
 import React from 'react';
-import './patientRegister.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as ActionCreator from '../../Actions/ActionCreator'
@@ -11,13 +10,29 @@ import Nav from '../Nav';
 class Bills extends React.Component {
     
 
+    constructor(){
+        super()
+        //fetch bills and put them into state
+        this.state={
+            bills:[{},{}]
+        }
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
 
+    handleSubmit(e){
+        console.log("hello")
+    var data = new FormData(e.target)
+    e.preventDefault()
+
+    this.props.actions.FetchBills(data)
+    }
     render() {
-
-                         
-
+       // var listOfBills=this.state.bills.map()
         return (
             <Container style={{"font-size":"15px"}}>
+                
+                
+                <Form onSubmit={this.handleSubmit}>
                 <Row>
                     <Col xs="5">
                         <Row><Col xs="2"><Label for="fromDate">From</Label></Col>
@@ -32,9 +47,11 @@ class Bills extends React.Component {
                         </Row>
                     </Col>
                     <Col>
-                        <Button>Submit</Button>
+                        <Button type="submit">Submit</Button>
                     </Col>
-                </Row>     
+                    </Row>
+                </Form>
+                     
                 <Row style={{"margin-top":"30px"}}>
                 <Table>
         <thead>
@@ -47,12 +64,6 @@ class Bills extends React.Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
           
         </tbody>
       </Table>
@@ -62,9 +73,20 @@ class Bills extends React.Component {
         );
     }
 }
+const mapStateToProps = (state, ownProps) => {
+    debugger
+    console.log(state)
+	return {
+		...ownProps,
+        response: state.bills.response
+        
+       // errorMessage : state.signIn
+	};
+};
+
 const mapDispatchToProps = (dispatch) => {
     return {
         actions: bindActionCreators(ActionCreator, dispatch)
     };
 };
-export default connect(null, mapDispatchToProps)(Bills);
+export default connect(mapStateToProps, mapDispatchToProps)(Bills);

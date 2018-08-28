@@ -6,13 +6,37 @@ export default class Appointment extends React.Component{
         super()
         //set state by fetching initial value
         this.state={
+            available:false,
+            details:{},
             upcoming:[{dept:"orth",doctor:"Dr.Doctor",date:"11/11/11",time:"someTime"},
                       {dept:"cardio",doctor:"Dr.NotDoctor",date:"12/12/12",time:"someOtherTime"}]
         }
+        this.checkAvailability = this.checkAvailability.bind(this)
     }
     handleCancel(e){
         //delete appointment
         console.log("cancel on ",e.target.id)
+    }
+    checkAvailability(e){
+        
+        e.preventDefault();
+        var date=document.getElementById("date").value
+        var time=document.getElementById("time").value
+        console.log(date,time)
+        //check if available
+        if(true){
+            console.log("hello")
+            this.setState({
+                available:true
+            })
+        }
+    }
+    handleChange(e){
+        e.preventDefault()
+        var newState = this.state.details;
+        newState[e.target.name] = e.target.value;
+        this.setState({ details: newState });
+        console.log(this.state)
     }
     render(){
         var listOfAppointments = this.state.upcoming.map((appointment,index)=>
@@ -26,11 +50,11 @@ export default class Appointment extends React.Component{
             </tr>
         )
         var Message=()=>{
-            if(false){
-                return(<Alert color="danger">Appointment not available at this time. Please try for some other date or time.</Alert>)
+            if(this.state.available){
+                return(<Alert color="success">Appointment available.</Alert>)
             }
             else
-                return(<Alert  color="success">Appointment available.</Alert>)
+                return(<Alert  color="danger">Appointment not available at this time. Please try for some other date or time.</Alert>)
         }
         var Appoint = ()=>{
 
@@ -61,7 +85,7 @@ export default class Appointment extends React.Component{
             return(
             <Container>
                 <h5 style={{"text-align":"center"}}>Book Appointment</h5>
-                <Form>
+                <Form >
                     <Label for="name">Patient's Name</Label>
                     <Input style= {{"maxWidth":"50%"}} type="text" name="name" id="name"/>
                     <br/>
@@ -73,22 +97,33 @@ export default class Appointment extends React.Component{
                         <option>Emergency</option>
                     </Input>
                     <br/>
+                    <Label for="doctor">Doctor</Label>
+                    <Input  style= {{"maxWidth":"50%"}} type="select" name="doctor" id="doctor">
+                        <option>Select Doctor</option>
+                        <option>doctor1</option>
+                        <option>Doctor2</option>
+                        <option>Doctor3</option>
+                        <option>Doctor4</option>
+                    </Input>
+                    <br/>
+                    
+                    
                     <FormGroup>
                         <Row>
                         <Col>
                             <Label for="date">Date</Label>
-                            <Input style= {{"maxWidth":"75%"}} type="date" name="date" id="date"/>
+                            <Input style= {{"maxWidth":"75%"}} type="date" name="date" id="date" value={this.state.date} onChange={(event)=>{this.checkAvailability(event),this.handleChange(event)}}/>
                         </Col>
                         <Col>
                             <Label for="time">Time</Label>
-                            <Input style= {{"maxWidth":"75%"}} type="time" name="time" id="time"/>
+                            <Input style= {{"maxWidth":"75%"}} type="time" name="time" id="time" value={this.state.time} onChange={(event)=>{this.checkAvailability(event),this.handleChange(event)}}/>
                         </Col>
                         </Row>
                         <br/>
                         <Message/>
                     </FormGroup>
                     <Link to="/patient/appointment"><Button>Cancel</Button></Link>{"  "}
-                    <Button>Confirm</Button>
+                    <Button type="submit">Confirm</Button>
                 </Form>
 
             </Container>

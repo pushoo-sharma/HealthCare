@@ -1,6 +1,5 @@
 import React from 'react';
 import {Container,Row,Col} from 'reactstrap';
-import PatientProfileEdit from "./PatientProfileEdit"
 import Appointment from './Appointment';
 import AddEditPatient from './AddEditPatient';
 import {Route} from 'react-router-dom';
@@ -21,7 +20,6 @@ export default class Patient extends React.Component{
                 <Route path={`/patient/appointment`} component={Appointment} ></Route> 
                 <Route path={`/patient/registerPatient`} component={AddEditPatient} ></Route> 
                 <Route path={`/patient/profile`} component={PatientProfile} ></Route> 
-                <Route path={`/patient/edit`} component={PatientProfileEdit} ></Route> 
                 <Route path={'/patient/health'} component = {PatientHealth}/>
                 <Route path={'/patient/equipments'} component = {PatientEquipments}/>
                 <Route path={'/patient/bills'} component = {PatientBills}/>
